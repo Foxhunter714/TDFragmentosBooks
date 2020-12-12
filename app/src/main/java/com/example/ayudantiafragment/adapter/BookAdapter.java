@@ -39,8 +39,6 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.MyViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull BookAdapter.MyViewHolder holder, int position) {
             holder.name.setText(bookList.get(position).getName());
-            holder.author.setText(bookList.get(position).getAuthor());
-            holder.year.setText(bookList.get(position).getYear());
             Glide.with(context).load(bookList.get(position).getImage()).override(500, 500).into(holder.imageView);
     }
 
@@ -59,14 +57,12 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.MyViewHolder> 
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView name, author, year;
+        TextView name;
         ImageView imageView;
         public MyViewHolder(@NonNull View itemView, final BookAdapter.OnItemClickListener listener) {
             super(itemView);
             name = itemView.findViewById(R.id.tvName);
             imageView = itemView.findViewById(R.id.ivBook);
-            author = itemView.findViewById(R.id.tvAuthor2);
-            year = itemView.findViewById(R.id.tvYear2);
             itemView.setOnClickListener(v -> {
                 int position = getAdapterPosition();
                 listener.onItemClick(position);
