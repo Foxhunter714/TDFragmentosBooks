@@ -87,7 +87,8 @@ public class BookListFragment extends Fragment {
                 //Se llama al Fragment Manager
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 //Intercambio de fragmentos en pantalla
-                fragmentManager.beginTransaction().add(R.id.container, DetailFragment.newInstance(book.getName(), book.getImage()), "detail").remove(fragmentManager.findFragmentByTag("listFragment")).commit();
+                final String tag = "detail";
+                fragmentManager.beginTransaction().add(R.id.container, DetailFragment.newInstance(book.getName(), book.getImage()), tag).addToBackStack(tag).remove(fragmentManager.findFragmentByTag("listFragment")).commit();
             }
         });
     }
