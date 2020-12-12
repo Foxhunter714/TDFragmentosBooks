@@ -5,28 +5,19 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
-import android.provider.ContactsContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.ayudantiafragment.R;
-import com.example.ayudantiafragment.adapter.BookAdapter;
-import com.example.ayudantiafragment.model.Book;
-import com.example.ayudantiafragment.model.DataSource;
-
-import java.util.List;
 
 public class DetailFragment extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    private String mParam1;
-    private String mParam2;
+    private String name;
+    private String image;
 
     public DetailFragment() {
         // Required empty public constructor
@@ -45,9 +36,15 @@ public class DetailFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+            // Nombre del libro
+            name = getArguments().getString(ARG_PARAM1);
+
+            // TODO con el nombre del libro se le pide al presenter la información
+
+            // imagen del libro
+            image = getArguments().getString(ARG_PARAM2);
         }
+
     }
 
     @Override
